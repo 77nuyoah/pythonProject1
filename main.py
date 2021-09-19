@@ -20,6 +20,27 @@ text = "".join(code)
 reg = r'\b[a-zA-Z]+\b'
 line = re.findall(reg, text)
 
+def switch_count():
+    switch_num = 0
+    switch_flag = 0
+    case_num = []
+    if line.count('switch') == 0:
+        print('switch num: 0')
+        return 0
+
+    for kw in line:
+        if kw == 'switch':
+            switch_num += 1
+            switch_flag = 1
+            case_num.append(0)
+        if switch_flag == 1 and kw == 'case':
+            case_num[switch_num-1] += 1
+
+    print("switch num: {}".format(line.count('switch')))
+    print("case num:", end = '')
+    for i in range(len(case_num)):
+        print(" {}".format(case_num[i]), end = '')
+
 
 keyword_dict = {}
 total = 0
@@ -29,3 +50,4 @@ for word in keyword_list:
         keyword_dict[word] = num
         total += num
 print("total num: {}".format(total))
+switch_count()
