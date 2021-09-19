@@ -5,11 +5,8 @@ keyword_list = ['auto','break','case','char','const','continue','default','do',
                 'void','volatile','while']
 
 
-filepath = input("代码文件的路径:")
-
-
 code = []
-with open(filepath, 'r' ) as f:
+with open(r'C:\Users\林\Desktop\Target.cpp', 'r' ) as f:
     for line in f:
         code.append(line)
 f.close()
