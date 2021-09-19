@@ -42,12 +42,16 @@ def switch_count():
         print(" {}".format(case_num[i]), end = '')
 
 
-keyword_dict = {}
-total = 0
-for word in keyword_list:
-    num = line.count(word)
-    if num != 0:
-        keyword_dict[word] = num
-        total += num
-print("total num: {}".format(total))
+def total_num():
+    keyword_dict = {}
+    total = 0
+    for word in keyword_list:
+        num = line.count(word)
+        if num != 0:
+            keyword_dict[word] = num
+            total += num
+    print("total num: {}".format(total))
+
+
+total_num()
 switch_count()
