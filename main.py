@@ -7,11 +7,12 @@ keyword_list = ['auto','break','case','char','const','continue','default','do',
                 'void','volatile','while']
 
 
+#读取文件并转换
 filepath = input("代码文件的路径:")
 degree = eval(input("完成等级（从低到高为1，2，3，4）:"))
 
 code = []
-with open(filepath, 'r' ) as f:
+with open( filepath, 'r' ) as f:
     for line in f:
         code.append(line)
 f.close()
@@ -19,6 +20,7 @@ text = "".join(code)
 
 reg = r'\b[a-zA-Z]+\b'
 line = re.findall(reg, text)
+
 
 def switch_count():
     switch_num = 0
@@ -65,6 +67,7 @@ def ifelse_count():
     reg = r'\bif\b|\belse\b| \belse if\b'
     result = re.findall(reg, text)
 
+    s = Stack()
     ifelse_num = 0
     ifelifelse_num = 0
     s = Stack()
