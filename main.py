@@ -42,12 +42,60 @@ def switch_count():
         print(" {}".format(case_num[i]), end = '')
 
 
-keyword_dict = {}
-total = 0
-for word in keyword_list:
-    num = line.count(word)
-    if num != 0:
-        keyword_dict[word] = num
-        total += num
-print("total num: {}".format(total))
+def ifelse_count():
+    class Stack:
+        def __init__(self):
+            self.items = []
+
+        def isEmpty(self):
+            return self.items == []
+
+        def push(self, item):
+            self.items.append(item)
+
+        def pop(self):
+            return self.items.pop()
+
+        def peek(self):
+            return self.items[len(self.items) - 1]
+
+        def size(self):
+            return len(self.items)
+
+    s = Stack()
+    ifelse_num = 0
+    ifelifelse_num = 0
+    s = Stack()
+    for kw in line:
+        if kw == 'if':
+            s.push('if')
+        elif kw == 'else if' and s.peek() == 'if':
+            s.push('else if')
+        elif kw == 'else':
+            if (s.peek() == 'if'):
+                ifelse_num += 1
+                s.pop()
+            else:
+                while (s.peek() != 'if'):
+                    s.pop()
+                s.pop()
+                ifelifelse_num += 1
+    print('\n', end='')
+    print('if-else num: {}'.format(ifelse_num))
+    print('if-elif-else num: {}'.format(ifelifelse_num))
+
+
+def total_num():
+    keyword_dict = {}
+    total = 0
+    for word in keyword_list:
+        num = line.count(word)
+        if num != 0:
+            keyword_dict[word] = num
+            total += num
+    print("total num: {}".format(total))
+
+
+total_num()
 switch_count()
+ifelse_count()
