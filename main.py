@@ -62,15 +62,17 @@ def ifelse_count():
         def size(self):
             return len(self.items)
 
-    s = Stack()
+    reg = r'\bif\b|\belse\b| \belse if\b'
+    result = re.findall(reg, text)
+
     ifelse_num = 0
     ifelifelse_num = 0
     s = Stack()
-    for kw in line:
+    for kw in result:
         if kw == 'if':
             s.push('if')
-        elif kw == 'else if' and s.peek() == 'if':
-            s.push('else if')
+        elif kw == ' else if' and s.peek() == 'if':
+            s.push(' else if')
         elif kw == 'else':
             if (s.peek() == 'if'):
                 ifelse_num += 1
