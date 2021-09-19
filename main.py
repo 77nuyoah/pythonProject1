@@ -87,7 +87,8 @@ def ifelse_count():
                 ifelifelse_num += 1
     print('\n', end='')
     print('if-else num: {}'.format(ifelse_num))
-    print('if-elif-else num: {}'.format(ifelifelse_num))
+    if degree == 4:
+        print('if-elif-else num: {}'.format(ifelifelse_num))
 
 
 def total_num():
@@ -101,6 +102,9 @@ def total_num():
     print("total num: {}".format(total))
 
 
-total_num()
-switch_count()
-ifelse_count()
+if degree >= 1:
+    total_num()
+if degree >= 2:
+    switch_count()
+if degree >= 3:
+    ifelse_count()
